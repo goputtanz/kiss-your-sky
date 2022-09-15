@@ -1,4 +1,4 @@
-package com.nasaapp.kissyoursky
+package com.nasaapp.kissyoursky.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
