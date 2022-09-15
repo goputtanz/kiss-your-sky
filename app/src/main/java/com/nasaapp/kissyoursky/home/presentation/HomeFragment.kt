@@ -1,4 +1,4 @@
-package com.nasaapp.kissyoursky.home
+package com.nasaapp.kissyoursky.home.presentation
 
 import android.os.Bundle
 import android.view.View
