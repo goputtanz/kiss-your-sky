@@ -5,5 +5,5 @@ import com.nasaapp.kissyoursky.util.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface AstronomyRepository {
-    fun getAstronomyDetails(): Flow<Resource<AstronomyDetails>>
+    fun astronomyDetails(): Flow<Resource<AstronomyDetails>>
 }

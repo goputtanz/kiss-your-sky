@@ -8,6 +8,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import coil.load
 import com.nasaapp.kissyoursky.R
 import com.nasaapp.kissyoursky.databinding.FragmentHomeBinding
 import com.nasaapp.kissyoursky.home.domain.model.AstronomyDetails
@@ -19,7 +20,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
     private lateinit var binding: FragmentHomeBinding
-    val viewModel: HomeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+    private lateinit var viewModel: HomeViewModel
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,6 +47,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun handleSuccess(astronomyDetails: AstronomyDetails) {
         binding.title.text = astronomyDetails.title
+        binding.astronomicalImage.load(astronomyDetails.hdImageUrl)
     }
 
     private fun handleError(error: String) {
