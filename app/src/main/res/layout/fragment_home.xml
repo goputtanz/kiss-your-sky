@@ -17,6 +17,12 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/backgrounds/scenic" />
 
+    <VideoView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/videoView"
+        />
+
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"

@@ -1,13 +1,14 @@
 package com.nasaapp.kissyoursky.home.presentation
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.MediaController
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import coil.load
@@ -49,8 +50,26 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun handleSuccess(astronomyDetails: AstronomyDetails?) {
-        binding.title.text = astronomyDetails?.title
-        binding.astronomicalImage.load(astronomyDetails?.hdImageUrl)
+        Log.d("handleSuccess", "handleSuccess: $astronomyDetails")
+        if (astronomyDetails?.mediaType == "video") {
+            binding.astronomicalImage.visibility = View.GONE
+            handleVideo(astronomyDetails.hdImageUrl)
+        } else {
+            binding.videoView.visibility = View.GONE
+            binding.title.text = astronomyDetails?.title
+            binding.astronomicalImage.load(astronomyDetails?.hdImageUrl)
+        }
+
+    }
+
+    private fun handleVideo(videoUrl: String) {
+        val uri: Uri = Uri.parse(videoUrl)
+        binding.videoView.setVideoURI(uri)
+        val mediaController = MediaController(requireActivity())
+        mediaController.setAnchorView(binding.videoView)
+        mediaController.setMediaPlayer(binding.videoView)
+        binding.videoView.setMediaController(mediaController)
+        binding.videoView.start()
     }
 
     private fun handleError(error: String) {
