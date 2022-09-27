@@ -4,6 +4,7 @@ import com.nasaapp.kissyoursky.home.data.AstronomyService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 class RetrofitInstance {
 
@@ -18,6 +19,7 @@ class RetrofitInstance {
             Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL_Astronomy)
                 .client(okHttpClient)
+                .addConverterFactory(MoshiConverterFactory.create())
                 .build()
         }
 

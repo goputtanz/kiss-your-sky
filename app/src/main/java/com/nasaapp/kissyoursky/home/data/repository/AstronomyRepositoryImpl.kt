@@ -9,14 +9,18 @@ import com.nasaapp.kissyoursky.util.RetrofitInstance
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class AstronomyRepositoryImpl () : AstronomyRepository {
+class AstronomyRepositoryImpl : AstronomyRepository {
     override fun astronomyDetails(): Flow<Resource<AstronomyDetails>> = flow{
         emit(Resource.Loading)
         val responseFromApiCall = RetrofitInstance.astronomyService.getAstronomyDetails("DEMO_KEY")
         if ((responseFromApiCall.isSuccessful)) {
-            responseFromApiCall.body()?.let {
-                emit(Resource.Success(it.toAstronomyResponseDto()))
+            if (responseFromApiCall.body()!=null){
+                val response = responseFromApiCall.body()?.toAstronomyResponseDto()
+                emit(Resource.Success(response?:AstronomyDetails("","","","","")))
+            }else{
+                emit(Resource.Error(ERROR_NO_DATA))
             }
+
         } else {
             emit(
                 Resource.Error(
@@ -26,6 +30,9 @@ class AstronomyRepositoryImpl () : AstronomyRepository {
             )
 
         }
+    }
+    companion object{
+        private const val ERROR_NO_DATA = "There is no data to display."
     }
 
 
