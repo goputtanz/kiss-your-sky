@@ -6,10 +6,10 @@ import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.ImageView.ScaleType
 import android.widget.MediaController
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -76,7 +76,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             } else {
                 binding.videoView.visibility = View.GONE
                 binding.title.text = astronomyDetails?.title
-                binding.astronomicalImage.load(astronomyDetails?.hdImageUrl)
+                binding.astronomicalImage.load(astronomyDetails?.hdImageUrl){
+                    placeholder(R.drawable.ic_image_not_found)
+                }
             }
 
         }
@@ -88,6 +90,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.navigateToDetails.visibility = View.VISIBLE
         val animation:Animation = AnimationUtils.loadAnimation(requireContext(),R.anim.slide)
         binding.navigateToDetails.startAnimation(animation)
+        animation.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation) {}
+            override fun onAnimationEnd(animation: Animation) {
+                binding.navigateToDetails.clearAnimation()
+            }
+            override fun onAnimationRepeat(animation: Animation) {}
+        })
     }
 
     private fun handleVideo(videoUrl: String) {

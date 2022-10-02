@@ -19,5 +19,7 @@ data class AstronomyResponseDto(
     @Json(name = "title")
     val title: String,
     @Json(name = "url")
-    val url: String
+    val url: String,
+    @Json(name = "hdurl")
+    val hdurl: String
 )
