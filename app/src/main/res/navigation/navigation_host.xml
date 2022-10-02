@@ -8,5 +8,18 @@
         android:id="@+id/homeFragment"
         android:name="com.nasaapp.kissyoursky.home.presentation.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_astronomyDetailsFragment"
+            app:destination="@id/astronomyDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/astronomyDetailsFragment"
+        android:name="com.nasaapp.kissyoursky.home.presentation.AstronomyDetailsFragment"
+        android:label="fragment_astronomy_details"
+        tools:layout="@layout/fragment_astronomy_details" >
+        <argument
+            android:name="astronomyData"
+            app:argType="com.nasaapp.kissyoursky.home.domain.model.AstronomyDetails" />
+    </fragment>
 </navigation>

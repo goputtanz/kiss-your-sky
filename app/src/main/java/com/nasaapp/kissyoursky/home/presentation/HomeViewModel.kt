@@ -25,11 +25,11 @@ class HomeViewModel : ViewModel() {
 
     private fun getAstronomyPicture() {
         viewModelScope.launch {
-            repository.astronomyDetails().collectLatest {
-                when (it) {
+            repository.astronomyDetails().collectLatest {details->
+                when (details) {
                     is Resource.Loading -> _homeState.update { it.copy(loading = true) }
-                    is Resource.Success -> _homeState.update { it.copy(success = it.success) }
-                    is Resource.Error -> _homeState.update { it.copy(error = it.error) }
+                    is Resource.Success -> _homeState.update { it.copy(success = details.value, loading = false) }
+                    is Resource.Error -> _homeState.update { it.copy(error = details.error, loading = false) }
                 }
             }
         }
