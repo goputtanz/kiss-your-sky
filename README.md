@@ -1,5 +1,6 @@
 # kiss-your-sky
 MVVM Architecture showcase application displays NASA Astronamy Pictures.
+Uses MVVM Architecture,Kotlin Flows,Retrofit2,Coil,Navigation
 
 # Links Used for refferance
 
