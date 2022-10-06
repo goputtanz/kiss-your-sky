@@ -1,7 +1,7 @@
 # kiss-your-sky
 MVVM Architecture showcase application displays NASA Astronamy Pictures.
 
-# Used Links
+# Links Used for refferance
 
 https://developer.android.com/guide/navigation/navigation-getting-started
 https://square.github.io/retrofit/
