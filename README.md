@@ -9,5 +9,4 @@ https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModel
 https://coil-kt.github.io/coil/
 
 # Screenshots
-
 <img src="https://github.com/goputtanz/kiss-your-sky/blob/master/images/home.png" width="300"/>   <img src="https://github.com/goputtanz/kiss-your-sky/blob/master/images/details.png" width="300"/>
