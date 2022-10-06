@@ -2,7 +2,7 @@
 MVVM Architecture sample application displays NASA Astronomy Pictures.
 Uses MVVM Architecture,Kotlin Flows,Retrofit2,Coil,Navigation
 
-# Links Used for refferance
+# Links Used for reference
 
 https://api.nasa.gov/<br>
 https://developer.android.com/guide/navigation/navigation-getting-started<br>
