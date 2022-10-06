@@ -38,9 +38,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         Log.d("onViewCreated", "onViewCreated: ")
     }
 
-    private fun defaults(){
+    private fun defaults() {
         binding.navigateToDetails.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAstronomyDetailsFragment(astronomyData))
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToAstronomyDetailsFragment(
+                    astronomyData
+                )
+            )
         }
     }
 
@@ -59,8 +63,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun handleLoading(loading: Boolean) {
         if (loading) {
             binding.progressBar.visibility = View.VISIBLE
-        }
-        else {
+        } else {
             binding.progressBar.visibility = View.GONE
         }
         Log.d("loading", "handleLoading: $loading")
@@ -76,7 +79,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             } else {
                 binding.videoView.visibility = View.GONE
                 binding.title.text = astronomyDetails?.title
-                binding.astronomicalImage.load(astronomyDetails?.hdImageUrl){
+                binding.astronomicalImage.load(astronomyDetails?.hdImageUrl) {
                     placeholder(R.drawable.ic_image_not_found)
                 }
             }
@@ -88,13 +91,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun handleAnimation() {
         binding.navigateToDetails.visibility = View.VISIBLE
-        val animation:Animation = AnimationUtils.loadAnimation(requireContext(),R.anim.slide)
+        val animation: Animation = AnimationUtils.loadAnimation(requireContext(), R.anim.slide)
         binding.navigateToDetails.startAnimation(animation)
         animation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation) {}
             override fun onAnimationEnd(animation: Animation) {
                 binding.navigateToDetails.clearAnimation()
             }
+
             override fun onAnimationRepeat(animation: Animation) {}
         })
     }
@@ -112,8 +116,5 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun handleError(error: String) {
         if (error.isNotBlank()) Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
     }
-
-
-
 
 }
