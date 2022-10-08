@@ -9,6 +9,7 @@
     <ImageView
         android:id="@+id/astronomicalImage"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,10 +19,11 @@
         tools:src="@tools:sample/backgrounds/scenic" />
 
 
-    <VideoView
+    <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/videoView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         app:layout_anchor="@+id/astronomicalImage"
         app:layout_anchorGravity="center" />
 
@@ -37,7 +39,7 @@
         android:layout_gravity="bottom|center_vertical"
         android:layout_margin="16dp"
         android:alpha="0.5"
-        android:visibility="invisible"
+        android:visibility="gone"
         tools:visibility="visible"
         android:id="@+id/navigateToDetails"
         app:cardCornerRadius="15dp">

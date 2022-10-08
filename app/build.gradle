@@ -66,6 +66,8 @@ dependencies {
     //coil for image loading
     implementation "io.coil-kt:coil:2.2.1"
 
+    //exoPlayer
+    implementation 'com.google.android.exoplayer:exoplayer:2.18.1'
 
 
 

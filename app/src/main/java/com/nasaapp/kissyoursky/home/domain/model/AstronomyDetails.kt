@@ -9,7 +9,7 @@ import kotlinx.parcelize.Parcelize
 data class AstronomyDetails(
     val date: String,
     val explanation: String,
-    val hdImageUrl: String,
+    val contentUrl: String,
     val mediaType: String,
     val title: String,
 ) : Parcelable
