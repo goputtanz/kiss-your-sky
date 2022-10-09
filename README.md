@@ -10,5 +10,4 @@ https://square.github.io/retrofit/<br>
 https://developer.android.com/reference/kotlin/androidx/lifecycle/ViewModel<br>
 https://coil-kt.github.io/coil/
 
-<h2>Screenshots</h2><br>
-<img src="https://github.com/goputtanz/kiss-your-sky/blob/master/images/home.jpg" width="300"/> <img src="https://github.com/goputtanz/kiss-your-sky/blob/master/images/details.jpg" width="300"/>
+<h2>Screenshots</h2><br><img src="https://github.com/goputtanz/kiss-your-sky/blob/master/images/home.jpg" width="300"/>  <img src="https://github.com/goputtanz/kiss-your-sky/blob/master/images/details.jpg" width="300"/>
