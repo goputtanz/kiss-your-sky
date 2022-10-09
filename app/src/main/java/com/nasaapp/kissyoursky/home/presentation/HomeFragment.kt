@@ -78,7 +78,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             astronomyData = astronomyDetails
             if (astronomyDetails.mediaType == "image") {
                 handleAnimation()
-                binding.astronomicalImage.visibility = View.VISIBLE
+                binding.astronomicalLayout.visibility = View.VISIBLE
                 binding.title.text = astronomyDetails.title
                 binding.astronomicalImage.load(astronomyDetails.contentUrl) {
                     placeholder(R.drawable.ic_image_not_found)
