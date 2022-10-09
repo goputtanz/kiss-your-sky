@@ -43,7 +43,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun defaults() {
-        binding.navigateToDetails.setOnClickListener {
+        binding.detailsButton.setOnClickListener {
             findNavController().navigate(
                 HomeFragmentDirections.actionHomeFragmentToAstronomyDetailsFragment(
                     astronomyData
@@ -96,18 +96,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun handleAnimation() {
-
-        binding.navigateToDetails.visibility = View.VISIBLE
-        val animation: Animation = AnimationUtils.loadAnimation(requireContext(), R.anim.slide)
-        binding.navigateToDetails.startAnimation(animation)
-        animation.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(animation: Animation) {}
-            override fun onAnimationEnd(animation: Animation) {
-                binding.navigateToDetails.clearAnimation()
-            }
-
-            override fun onAnimationRepeat(animation: Animation) {}
-        })
+        binding.detailsButton.visibility = View.VISIBLE
+        val animation: Animation = AnimationUtils.loadAnimation(requireContext(), R.anim.bounce)
+        binding.detailsButton.startAnimation(animation)
     }
 
     private fun initPlayerWhenReady(contentUrl: String) {
