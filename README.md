@@ -1,6 +1,6 @@
 # kiss-your-sky
 MVVM Architecture sample application that shows NASA Astronomy Pictures.
-Uses MVVM Architecture, Kotlin Flows, coroutines, Retrofit2, Coil image loading library, Android Navigation Component,
+Uses MVVM Architecture, Kotlin Flows, coroutines, Retrofit2, Coil image loading library, Android Navigation Component
 
 <h2>Links Used for reference</h2>
 
