@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="KissYourSky.TextAppearance.MaterialComponents.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/open_sans_bold</item>
+    </style>
+
+    <style name="KissYourSky.TextAppearance.MaterialComponents.HeadLine1.RaleWay" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/open_sans_bold</item>
+    </style>
+
+
+    <style name="KissYourSky.TextAppearance.MaterialComponents.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/open_sans_bold</item>
+    </style>
+
+    <style name="KissYourSky.TextAppearance.MaterialComponents.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/open_sans_semi_bold</item>
+    </style>
+
+    <style name="KissYourSky.TextAppearance.MaterialComponents.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/open_sans_semi_bold</item>
+    </style>
+
+    <style name="KissYourSky.TextAppearance.MaterialComponents.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/open_sans_semi_bold</item>
+    </style>
+
+    <style name="KissYourSky.TextAppearance.MaterialComponents.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/open_sans_semi_bold</item>
+    </style>
+
+    <style name="KissYourSky.TextAppearance.MaterialComponents.Subtitle1.semiBold" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/open_sans_medium</item>
+    </style>
+</resources>

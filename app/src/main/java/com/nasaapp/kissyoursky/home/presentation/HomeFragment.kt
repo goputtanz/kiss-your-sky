@@ -1,11 +1,13 @@
 package com.nasaapp.kissyoursky.home.presentation
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -49,6 +51,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     astronomyData
                 )
             )
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            binding.scrollView2.setOnScrollChangeListener(View.OnScrollChangeListener { view, i, i2, i3, i4 ->
+                if (i2>0){
+                    binding.detailsButton.shrink()
+                }else{
+                    binding.detailsButton.extend()
+                }
+            })
         }
     }
 
