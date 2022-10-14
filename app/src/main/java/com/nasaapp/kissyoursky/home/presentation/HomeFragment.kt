@@ -8,6 +8,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -55,9 +56,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             binding.scrollView2.setOnScrollChangeListener(View.OnScrollChangeListener { view, i, i2, i3, i4 ->
-                if (i2>0){
+                if (i2 > 0) {
                     binding.detailsButton.shrink()
-                }else{
+                } else {
                     binding.detailsButton.extend()
                 }
             })
@@ -67,17 +68,32 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun observeHomeFragmentState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.homeState.collectLatest {
-                    handleLoading(it.loading)
-                    handleError(it.error)
-                    handleSuccess(it.success)
+                viewModel.homeState.collectLatest { homeState ->
+                    handleNetworkConnection(homeState.networkInfo)
+                    handleLoading(homeState.loading)
+                    handleError(homeState.error)
+                    handleSuccess(homeState.success)
                 }
             }
         }
     }
 
+    private fun handleNetworkConnection(isNetworkConnected: Boolean) {
+        if (isNetworkConnected) {
+            binding.scrollView2.visibility = View.VISIBLE
+            binding.networkLayout.visibility = View.GONE
+        } else {
+            binding.detailsButton.hide()
+            binding.networkLayout.visibility = View.VISIBLE
+            binding.detailsLayout.visibility = View.GONE
+        }
+        Log.d("handleNetworkConnection", "handleNetworkConnection: $isNetworkConnected")
+    }
+
     private fun handleLoading(loading: Boolean) {
         if (loading) {
+            binding.detailsLayout.visibility = View.GONE
+            binding.detailsButton.hide()
             binding.progressBar.visibility = View.VISIBLE
         } else {
             binding.progressBar.visibility = View.GONE
@@ -87,9 +103,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun handleSuccess(astronomyDetails: AstronomyDetails?) {
         if (astronomyDetails != null) {
+            binding.detailsButton.show()
+            binding.detailsLayout.visibility = View.VISIBLE
+            handleAnimation()
             astronomyData = astronomyDetails
             if (astronomyDetails.mediaType == "image") {
-                handleAnimation()
                 binding.astronomicalLayout.visibility = View.VISIBLE
                 binding.title.text = astronomyDetails.title
                 binding.astronomicalImage.load(astronomyDetails.contentUrl) {
@@ -108,7 +126,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun handleAnimation() {
-        binding.detailsButton.visibility = View.VISIBLE
         val animation: Animation = AnimationUtils.loadAnimation(requireContext(), R.anim.bounce)
         binding.detailsButton.startAnimation(animation)
     }
@@ -120,7 +137,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         mPlayer?.setMediaSource(buildMediaSource(contentUrl))
     }
 
-    private fun releasePlayerWhenFinished(){
+    private fun releasePlayerWhenFinished() {
         if (mPlayer == null) {
             return
         }
@@ -132,7 +149,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         if (error.isNotBlank()) Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
     }
 
-    private fun buildMediaSource(videoURL:String): MediaSource {
+    private fun buildMediaSource(videoURL: String): MediaSource {
 //        sample video url for testing video
 //        val videoURL = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         val dataSourceFactory: DataSource.Factory = DefaultHttpDataSource.Factory()

@@ -12,6 +12,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         android:layout_gravity="center"
         android:paddingBottom="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,6 +22,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:id="@+id/detailsLayout"
             android:layout_height="0dp">
 
             <com.google.android.material.card.MaterialCardView
@@ -34,6 +36,8 @@
                 <FrameLayout
                     android:id="@+id/astronomicalLayout"
                     android:layout_width="match_parent"
+                    android:visibility="gone"
+                    tools:visibility="visible"
                     android:layout_height="match_parent">
 
                     <ImageView
@@ -48,7 +52,7 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="60dp"
                         android:layout_gravity="bottom"
                         android:background="@drawable/custom_gradient_bottom" />
                 </FrameLayout>
@@ -83,15 +87,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
-            <ProgressBar
-                android:id="@+id/progressBar"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -107,6 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="24dp"
+        android:visibility="gone"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
         android:text="Find more"
@@ -114,6 +110,44 @@
         android:textColor="@color/white"
         android:paddingStart="24dp"
         app:cornerRadius="24dp"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/networkLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+
+        <ImageView
+            android:id="@+id/imageViewWifi"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_wifi_red"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/red_700" />
+
+        <TextView
+            android:id="@+id/textWifi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Network Connection"
+            android:textAppearance="@style/KissYourSky.TextAppearance.MaterialComponents.Subtitle1.semiBold"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewWifi"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
         />
 
 
